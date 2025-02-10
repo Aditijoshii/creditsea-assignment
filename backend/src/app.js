@@ -9,7 +9,9 @@ const app = express();
 connectDB();
 
 app.use(cors({
-  origin: '*', 
+  origin: true,  // Change this line
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Add this line
+  allowedHeaders: ['Content-Type', 'Authorization'],     // Add this line
   credentials: true
 }));
 
