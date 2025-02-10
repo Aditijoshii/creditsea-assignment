@@ -6,17 +6,16 @@ const apiRoutes = require("./routes/api");
 
 const app = express();
 
-// Connect to MongoDB
 connectDB();
 
-// Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  credentials: true
+}));
 app.use(express.json());
 
-// Routes
 app.use("/api", apiRoutes);
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({
@@ -25,7 +24,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 10000;  
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
