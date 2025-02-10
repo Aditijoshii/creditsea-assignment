@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://creditsea-assignment-r10i.onrender.com";
+const API_BASE_URL = "https://creditsea-assignment-r10i.onrender.com/api";
 
 export const uploadReport = async (formData) => {
   try {
