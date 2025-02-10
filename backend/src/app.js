@@ -9,11 +9,11 @@ const app = express();
 connectDB();
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: '*', 
   credentials: true
 }));
-app.use(express.json());
 
+app.use(express.json());
 app.use("/api", apiRoutes);
 
 app.use((err, req, res, next) => {
@@ -24,7 +24,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 10000;  
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
